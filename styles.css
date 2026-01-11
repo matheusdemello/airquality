@@ -1,14 +1,13 @@
 /* Minimal, accessible styling for GitHub Pages */
 
 :root{
-  --bg: #0b1220;
-  --card: rgba(255,255,255,.06);
-  --card2: rgba(255,255,255,.08);
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.70);
-  --line: rgba(255,255,255,.12);
-  --shadow: 0 10px 30px rgba(0,0,0,.25);
-  --radius: 16px;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --shadow: 0 8px 22px rgba(15,23,42,.08);
+  --radius: 14px;
 }
 
 *{box-sizing:border-box}
@@ -16,10 +15,7 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 600px at 20% -10%, rgba(108,190,255,.20), transparent 60%),
-              radial-gradient(900px 500px at 80% 0%, rgba(255,209,102,.14), transparent 55%),
-              radial-gradient(900px 700px at 50% 120%, rgba(137,255,212,.12), transparent 55%),
-              var(--bg);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.55;
 }
@@ -38,7 +34,7 @@ img{max-width:100%; height:auto; display:block}
   left:16px; top:16px;
   width:auto; height:auto;
   padding:10px 12px;
-  background:#111a2f;
+  background:#111827;
   border:1px solid var(--line);
   border-radius:12px;
   z-index:9999;
@@ -49,7 +45,7 @@ img{max-width:100%; height:auto; display:block}
   top:0;
   z-index: 50;
   backdrop-filter: blur(10px);
-  background: rgba(11,18,32,.55);
+  background: rgba(255,255,255,.85);
   border-bottom: 1px solid var(--line);
 }
 .topbar__inner{
@@ -62,7 +58,7 @@ img{max-width:100%; height:auto; display:block}
 .brand__mark{
   width:34px; height:34px;
   border-radius: 10px;
-  background: rgba(255,255,255,.86);
+  background: #ffffff;
   padding:4px;
 }
 .brand__name{font-weight:700; letter-spacing: .2px}
@@ -75,7 +71,7 @@ img{max-width:100%; height:auto; display:block}
   padding:8px 10px;
   border-radius: 10px;
 }
-.nav a:hover{background: rgba(255,255,255,.06); color: var(--text)}
+.nav a:hover{background: rgba(15,23,42,.06); color: var(--text)}
 
 .hero{
   position:relative;
@@ -91,7 +87,7 @@ img{max-width:100%; height:auto; display:block}
   border-radius: var(--radius);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-  background: rgba(255,255,255,.04);
+  background: #ffffff;
 }
 .hero__quote{
   margin-top: 14px;
@@ -99,17 +95,6 @@ img{max-width:100%; height:auto; display:block}
   overflow:hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-}
-.hero__bg{
-  position:absolute;
-  inset:0;
-  opacity:.12;
-  background-image: url("./assets/img_13.jpeg");
-  background-size: cover;
-  background-position: center;
-  filter: saturate(1.1) contrast(1.05);
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,.55), transparent 70%);
-  pointer-events:none;
 }
 
 .section{padding: 32px 0}
@@ -132,23 +117,36 @@ img{max-width:100%; height:auto; display:block}
 .grid--3{grid-template-columns: repeat(3, minmax(0, 1fr))}
 
 .card{
-  background: linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.045));
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 18px;
 }
 
-.card h1{font-size: 18px; margin:0 0 10px}
+.card h1{font-size: 20px; margin:0 0 10px}
 .card h2{font-size: 16px; margin: 14px 0 8px}
 .card h3{font-size: 16px; margin: 0 0 10px}
 
 .mt{margin-top: 16px}
 
+.card-divider{
+  height: 1px;
+  background: var(--line);
+  margin: 12px 0;
+}
+
+.bullets{
+  margin: 10px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+.bullets li{margin: 6px 0}
+
 .checklist{list-style:none; padding:0; margin: 14px 0 0}
 .checklist li{padding: 10px 0; border-top: 1px solid var(--line)}
 .checklist li:first-child{border-top:none}
-.checklist li.divider{padding:0; border-top: 1px dashed rgba(255,255,255,.18)}
+.checklist li.divider{padding:0; border-top: 1px dashed rgba(15,23,42,.18)}
 .check{
   display:flex;
   gap:12px;
@@ -159,7 +157,7 @@ img{max-width:100%; height:auto; display:block}
   margin-top: 3px;
   width: 18px;
   height: 18px;
-  accent-color: #8ad5ff;
+  accent-color: #2563eb;
 }
 .check span{display:block}
 
@@ -170,38 +168,97 @@ img{max-width:100%; height:auto; display:block}
   align-items:center;
   flex-wrap:wrap;
 }
+.progress{
+  flex: 1 1 160px;
+  height: 8px;
+  background: rgba(15,23,42,.08);
+  border-radius: 999px;
+  overflow:hidden;
+}
+.progress__bar{
+  display:block;
+  height:100%;
+  width:0%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width .2s ease;
+}
 .btn{
   appearance:none;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.08);
+  border: 1px solid var(--line);
+  background: rgba(37,99,235,.08);
   color: var(--text);
   border-radius: 12px;
   padding: 10px 12px;
   font-weight: 600;
   cursor:pointer;
 }
-.btn:hover{background: rgba(255,255,255,.12)}
+.btn:hover{background: rgba(37,99,235,.14)}
+
+.do-card h3,
+.dont-card h3{margin-top: 0}
+.do-list,
+.dont-list{
+  list-style:none;
+  padding:0;
+  margin: 10px 0 0;
+  display:grid;
+  gap: 10px;
+}
+.do-list li,
+.dont-list li{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+}
+.dont-list li{background: #fff5f5; border-color: #fee2e2}
+
+.info-list{
+  display:grid;
+  gap: 12px;
+}
+.info-card{
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0;
+  overflow:hidden;
+}
+.info-card summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+.info-card summary::-webkit-details-marker{display:none}
+.info-card p{
+  margin: 0;
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--line);
+}
 
 .table-wrap{overflow:auto; border-radius: 12px}
 table{
   border-collapse: collapse;
   width: 100%;
   min-width: 820px;
-  background: rgba(0,0,0,.18);
+  background: #ffffff;
 }
 th, td{
   text-align:left;
   vertical-align: top;
   padding: 12px;
-  border: 1px solid rgba(255,255,255,.12);
+  border: 1px solid var(--line);
 }
 th{
-  background: rgba(255,255,255,.07);
+  background: #f3f4f6;
   font-weight: 700;
 }
 
 .accordion details{
-  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -217,7 +274,7 @@ th{
 .accordion summary::-webkit-details-marker{display:none}
 .accordion .panel{
   padding: 0 16px 16px;
-  border-top: 1px solid rgba(255,255,255,.10);
+  border-top: 1px solid var(--line);
 }
 .refs{margin:0; padding-left: 18px}
 .refs li{margin: 10px 0}
@@ -227,4 +284,5 @@ th{
   .hero__inner{grid-template-columns: 1fr}
   .grid--2, .grid--3{grid-template-columns: 1fr}
   table{min-width: 720px}
+  .actions{align-items:flex-start}
 }

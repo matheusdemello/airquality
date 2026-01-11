@@ -7,6 +7,7 @@
   const checkboxes = Array.from(root.querySelectorAll('input[type="checkbox"]'));
   const status = document.getElementById("status");
   const reset = document.getElementById("reset");
+  const progress = document.getElementById("progress-bar");
 
   function load() {
     try {
@@ -31,6 +32,10 @@
     if (!status) return;
     const done = checkboxes.filter(cb => cb.checked).length;
     status.textContent = `${done}/${checkboxes.length} completed`;
+    if (progress) {
+      const pct = checkboxes.length ? (done / checkboxes.length) * 100 : 0;
+      progress.style.width = `${pct}%`;
+    }
   }
 
   checkboxes.forEach(cb => cb.addEventListener("change", save));

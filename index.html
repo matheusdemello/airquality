@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ak-shumkar Nest — Seal & Breathe Checklist</title>
-  <meta name="description" content="Ak-shumkar Nest checklist and campaign evidence (UNICEF / WHO references)." />
+  <title>Ak-shumkar Nest — Seal &amp; Breathe</title>
+  <meta name="description" content="Ak-shumkar Nest checklist and campaign overview for healthier indoor air." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
       </div>
       <nav class="nav">
         <a href="#checklist">Checklist</a>
+        <a href="#do-dont">Do &amp; Don&apos;ts</a>
         <a href="#evidence">Evidence</a>
         <a href="#materials">Materials</a>
         <a href="#strategy">7 Cs</a>
@@ -41,19 +42,19 @@
 
         <div class="hero__right">
           <div class="card">
-            <h1>4. DEVELOPMENT &amp; TESTING</h1>
-            <h2>4.1 Overview</h2>
-            <p>
-              The creation of persuasive messaging, resources, and channels of communication for the Ak￾shumkar Nest campaign is covered in this section. It incorporates behavioral theory, cultural awareness, and global best practices, including insights from Policy Garage Japan, an innovation lab renowned for creating behavior change interventions that begin with individuals and grow to have an impact on public health.
-            </p>
-            <h2>4.2 Message Design and Communication Objective</h2>
-            <p>
-              Using a "Behavior-First" strategy, the campaign sets the Ak-Shumkar Nest as the main "Entry Point Behavior." We shift from general awareness to a more, useful behavioral bundle. The program's main communication tool is a consistent, culturally relevant message intended to reduce complicated environmental health interventions to a single, maternal action.
-            </p>
+            <h1>Seal &amp; Breathe</h1>
+            <p class="lead">A minimal, evidence-informed checklist for creating a clean, warm, safe nest for every newborn breath.</p>
+            <div class="card-divider"></div>
+            <h2>Focus</h2>
+            <p>Behavior-first messaging built on local traditions and global health guidance. The checklist turns complex indoor air interventions into three doable home actions.</p>
+            <ul class="bullets">
+              <li><strong>Seal</strong> drafts with felt strips.</li>
+              <li><strong>Isolate</strong> warmth to keep homes above 18°C.</li>
+              <li><strong>Ventilate</strong> at the cleanest time of day.</li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="hero__bg" aria-hidden="true"></div>
     </section>
 
     <section class="section" id="checklist">
@@ -98,15 +99,51 @@
               <li>
                 <label class="check">
                   <input type="checkbox" id="c4" />
-                  <span>7. Call to Action: The Weekly Household Checklist, the campaign concludes with a clear behavioral trigger: the Weekly Nest Check. Caregivers are encouraged to physically check their felt seals and ensure they have performed "short-burst ventilation."</span>
+                  <span>Weekly Nest Check: inspect felt seals and do a short-burst ventilation cycle.</span>
                 </label>
               </li>
             </ul>
 
             <div class="actions">
+              <div class="progress" aria-hidden="true">
+                <span class="progress__bar" id="progress-bar"></span>
+              </div>
               <button class="btn" id="reset">Reset checklist</button>
               <span class="muted" id="status" aria-live="polite"></span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="do-dont">
+      <div class="container">
+        <div class="section__head">
+          <h2>Do &amp; Don&apos;ts</h2>
+          <p class="muted">Quick guide</p>
+        </div>
+
+        <div class="grid grid--2">
+          <div class="card do-card">
+            <h3>Do</h3>
+            <ul class="do-list">
+              <li>Seal (Felt)</li>
+              <li>Isolate (Warmth)</li>
+              <li>Ventilate (Airflow)</li>
+              <li>Weekly Nest Check: inspect felt seals and do a short-burst ventilation cycle.</li>
+            </ul>
+          </div>
+          <div class="card dont-card">
+            <h3>Don&apos;t</h3>
+            <ul class="dont-list">
+              <li>Synthetic Foam/Rubber Seals</li>
+              <li>Petroleum-based: Non-renewable chemicals.</li>
+              <li>Basic: Static insulation; loses loft over time.</li>
+              <li>Non-breathable: Traps condensation; promotes mold.</li>
+              <li>Inactive: Simply blocks air; may off-gas VOCs.</li>
+              <li>Low: Cracks, peels, and degrades in 1-2 seasons.</li>
+              <li>Generic: Industrial/Imported feel.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -119,24 +156,23 @@
           <p class="muted">Key claims &amp; rationale used in the campaign text</p>
         </div>
 
-        <div class="grid grid--3">
-          <div class="card">
-            <h3>Health protection threshold</h3>
+        <div class="info-list">
+          <details class="info-card" open>
+            <summary>Health protection threshold</summary>
             <p>Effective sealing with felt strips and maintaining a stable temperature ensures the home stays above the 18°C threshold recommended for protecting respiratory health (WHO 2018).</p>
-          </div>
-          <div class="card">
-            <h3>Energy poverty &amp; heat loss</h3>
+          </details>
+          <details class="info-card">
+            <summary>Energy poverty &amp; heat loss</summary>
             <p>We provide logical proof that sealing drafts with wool-felt can reduce heat loss by up to 25%, a critical factor for families facing energy poverty (ARIS 2020).</p>
-          </div>
-          <div class="card">
-            <h3>Targeted ventilation timing</h3>
+          </details>
+          <details class="info-card">
+            <summary>Targeted ventilation timing</summary>
             <p>"We ventilate at 2:00 PM because the air is 30% cleaner than at 8:00 AM" (UNICEF 2022).</p>
-          </div>
-        </div>
-
-        <div class="card mt">
-          <h3>Tradition &amp; practice framing</h3>
-          <p>The Heart (Tradition): We tap into the "Heart" by connecting the checklist to the Yurt tradition. Framing the felt strips and the Kelt (lattice) ventilation as a modern evolution of the Kerege (yurt wall) honors Kyrgyz heritage, making the health intervention feel like an act of cultural pride rather than an external instruction. Just as the Tunduk (roof hole) of the yurt was opened during the sunny heat of the day to let out the smoke, we open our modern windows when the sun is highest to let our 'Nest' breathe."</p>
+          </details>
+          <details class="info-card">
+            <summary>Tradition &amp; practice framing</summary>
+            <p>The Heart (Tradition): We tap into the "Heart" by connecting the checklist to the Yurt tradition. Framing the felt strips and the Kelt (lattice) ventilation as a modern evolution of the Kerege (yurt wall) honors Kyrgyz heritage, making the health intervention feel like an act of cultural pride rather than an external instruction. Just as the Tunduk (roof hole) of the yurt was opened during the sunny heat of the day to let out the smoke, we open our modern windows when the sun is highest to let our 'Nest' breathe."</p>
+          </details>
         </div>
       </div>
     </section>
@@ -148,7 +184,8 @@
           <p class="muted">From the campaign report table</p>
         </div>
 
-        <div class="card">
+        <details class="info-card">
+          <summary>The "Warm Nest" Protective Barrier: Material &amp; Health Comparison</summary>
           <div class="table-wrap">
             <table>
               <thead>
@@ -199,7 +236,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </details>
 
       </div>
     </section>
@@ -212,7 +249,7 @@
         </div>
 
         <div class="accordion">
-          <details open>
+          <details>
             <summary>1. Command Attention</summary>
             <div class="panel">
               <p>The Falcon’s Nest Symbol of the Ak-shumkar (White Falcon) as the main logo to represent a guardian of the household. Just as the falcon selects high, clean environments for its young, our campaign commands attention by framing the home as a "Nest" that requires intentional construction. This visual metaphor aligns with the UNICEF (2020) and WHO (2023) approach of using culturally resonant symbols to drive community engagement in health behaviors.</p>
