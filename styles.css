@@ -168,6 +168,21 @@ img{max-width:100%; height:auto; display:block}
   align-items:center;
   flex-wrap:wrap;
 }
+.progress{
+  flex: 1 1 160px;
+  height: 8px;
+  background: rgba(15,23,42,.08);
+  border-radius: 999px;
+  overflow:hidden;
+}
+.progress__bar{
+  display:block;
+  height:100%;
+  width:0%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width .2s ease;
+}
 .btn{
   appearance:none;
   border: 1px solid var(--line);
@@ -179,6 +194,50 @@ img{max-width:100%; height:auto; display:block}
   cursor:pointer;
 }
 .btn:hover{background: rgba(37,99,235,.14)}
+
+.do-card h3,
+.dont-card h3{margin-top: 0}
+.do-list,
+.dont-list{
+  list-style:none;
+  padding:0;
+  margin: 10px 0 0;
+  display:grid;
+  gap: 10px;
+}
+.do-list li,
+.dont-list li{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+}
+.dont-list li{background: #fff5f5; border-color: #fee2e2}
+
+.info-list{
+  display:grid;
+  gap: 12px;
+}
+.info-card{
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0;
+  overflow:hidden;
+}
+.info-card summary{
+  cursor:pointer;
+  list-style:none;
+  padding: 14px 16px;
+  font-weight: 700;
+}
+.info-card summary::-webkit-details-marker{display:none}
+.info-card p{
+  margin: 0;
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--line);
+}
 
 .table-wrap{overflow:auto; border-radius: 12px}
 table{
@@ -225,4 +284,5 @@ th{
   .hero__inner{grid-template-columns: 1fr}
   .grid--2, .grid--3{grid-template-columns: 1fr}
   table{min-width: 720px}
+  .actions{align-items:flex-start}
 }
