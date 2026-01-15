@@ -1,332 +1,1846 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ak-shumkar Nest — Seal &amp; Breathe</title>
-  <meta name="description" content="Ak-shumkar Nest checklist and campaign overview for healthier indoor air." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ak-shumkar Nest — Protecting Every Breath</title>
+  <meta name="description" content="Ak-shumkar Nest: A health campaign for cleaner indoor air and healthier newborns in Kyrgyzstan.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1e4a5f;
+      --navy-deep: #153544;
+      --navy-light: #2b6a84;
+      --gold: #c9a227;
+      --gold-light: #e8c84a;
+      --gold-pale: #f5e6b3;
+      --cream: #f7f5f0;
+      --cream-dark: #ebe7de;
+      --white: #ffffff;
+      --text: #2c3e47;
+      --text-muted: #5a6d76;
+      --shadow-soft: 0 4px 20px rgba(30, 74, 95, 0.08);
+      --shadow-medium: 0 8px 32px rgba(30, 74, 95, 0.12);
+      --shadow-gold: 0 4px 24px rgba(201, 162, 39, 0.2);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+
+    h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+    h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+    h3 { font-size: clamp(1.3rem, 3vw, 1.6rem); }
+
+    p { margin-bottom: 1rem; }
+
+    a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover { color: var(--gold); }
+
+    /* Utility */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(247, 245, 240, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(30, 74, 95, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .nav.scrolled {
+      padding: 12px 0;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .nav-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: none;
+    }
+
+    @media (min-width: 480px) {
+      .nav-title { display: block; }
+    }
+
+    .nav-links {
+      display: none;
+      gap: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .nav-menu-btn { display: none; }
+    }
+
+    .nav-menu-btn:hover {
+      background: var(--navy);
+    }
+
+    .nav-menu-btn:hover svg {
+      stroke: var(--white);
+    }
+
+    .nav-menu-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--navy);
+      transition: stroke 0.3s ease;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 200;
+      background: var(--cream);
+      padding: 100px 24px 40px;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--navy);
+    }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-menu-links a {
+      padding: 16px 20px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-links a:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--cream), transparent);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+      }
+    }
+
+    .hero-content {
+      text-align: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-content { text-align: left; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--white);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: breathe 2s ease-in-out infinite;
+    }
+
+    .hero h1 {
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-text {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    @media (min-width: 900px) {
+      .hero-text { margin: 0 0 32px; }
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-cta { justify-content: flex-start; }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(30, 74, 95, 0.2);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-secondary:hover {
+      background: var(--gold-pale);
+      color: var(--navy-deep);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-logo-bg {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    .hero-logo {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(30, 74, 95, 0.1);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    @media (min-width: 900px) {
+      .stat { text-align: left; }
+    }
+
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 0;
+    }
+
+    @media (min-width: 768px) {
+      .section { padding: 120px 0; }
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .section-label::after {
+      background: linear-gradient(-90deg, var(--gold), transparent);
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Mission */
+    .mission {
+      background: var(--white);
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .mission-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .mission-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .mission-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      background: var(--white);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .mission-card:hover .mission-icon {
+      background: var(--navy);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .mission-card:hover .mission-icon svg {
+      stroke: var(--white);
+    }
+
+    .mission-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--navy);
+      transition: stroke 0.3s ease;
+    }
+
+    .mission-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .mission-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Checklist */
+    .checklist-section {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+      position: relative;
+    }
+
+    .checklist-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+    }
+
+    .checklist-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .checklist-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .checklist-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+    }
+
+    .checklist-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(30, 74, 95, 0.1);
+    }
+
+    .checklist-header h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .checklist-header h3 svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--gold);
+    }
+
+    .checklist-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .progress-bar {
+      width: 120px;
+      height: 8px;
+      background: var(--cream);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+      border-radius: 100px;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .checklist-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .checklist-item:hover {
+      background: var(--cream-dark);
+    }
+
+    .checklist-item.checked {
+      background: rgba(201, 162, 39, 0.1);
+    }
+
+    .checklist-item.checked .check-box {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .checklist-item.checked .check-box svg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .checklist-item.checked .check-label {
+      color: var(--text-muted);
+    }
+
+    .check-box {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .check-box svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--white);
+      stroke-width: 3;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s ease;
+    }
+
+    .check-content {
+      flex: 1;
+    }
+
+    .check-label {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .check-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .checklist-footer {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(30, 74, 95, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .checklist-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-reset {
+      background: transparent;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+
+    .btn-reset:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* Do's and Don'ts */
+    .guidelines {
+      background: var(--white);
+    }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .guidelines-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .guideline-card {
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guideline-card.do {
+      background: linear-gradient(135deg, rgba(30, 74, 95, 0.05), rgba(43, 106, 132, 0.1));
+      border: 1px solid rgba(30, 74, 95, 0.15);
+    }
+
+    .guideline-card.dont {
+      background: linear-gradient(135deg, rgba(180, 83, 83, 0.05), rgba(180, 83, 83, 0.1));
+      border: 1px solid rgba(180, 83, 83, 0.15);
+    }
+
+    .guideline-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .guideline-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .do .guideline-icon {
+      background: var(--navy);
+    }
+
+    .dont .guideline-icon {
+      background: #b45353;
+    }
+
+    .guideline-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--white);
+    }
+
+    .guideline-header h3 {
+      margin: 0;
+    }
+
+    .dont .guideline-header h3 {
+      color: #8b3a3a;
+    }
+
+    .guideline-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .guideline-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+    }
+
+    .guideline-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin-top: 6px;
+      border-radius: 50%;
+    }
+
+    .do .guideline-list li::before {
+      background: var(--navy);
+    }
+
+    .dont .guideline-list li::before {
+      background: #b45353;
+    }
+
+    /* Evidence */
+    .evidence {
+      position: relative;
+    }
+
+    .evidence::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .evidence-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .evidence-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .evidence-item:hover {
+      box-shadow: var(--shadow-medium);
+    }
+
+    .evidence-toggle {
+      width: 100%;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      text-align: left;
+      transition: background 0.3s ease;
+    }
+
+    .evidence-toggle:hover {
+      background: var(--cream);
+    }
+
+    .evidence-toggle h4 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .evidence-toggle svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .evidence-item.open .evidence-toggle svg {
+      transform: rotate(180deg);
+    }
+
+    .evidence-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .evidence-item.open .evidence-content {
+      max-height: 500px;
+    }
+
+    .evidence-text {
+      padding: 0 24px 24px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--cream);
+    }
+
+    .evidence-text p {
+      margin: 16px 0 0;
+    }
+
+    /* Materials */
+    .materials {
+      background: var(--navy-deep);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .materials::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .materials .section-header h2 {
+      color: var(--white);
+    }
+
+    .materials .section-label {
+      color: var(--gold-light);
+    }
+
+    .materials .section-header p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-medium);
+    }
+
+    table {
+      width: 100%;
+      min-width: 700px;
+      border-collapse: collapse;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    th, td {
+      padding: 16px 20px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    th {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    th:first-child {
+      border-radius: var(--radius) 0 0 0;
+    }
+
+    th:last-child {
+      border-radius: 0 var(--radius) 0 0;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background: var(--cream);
+    }
+
+    td:first-child {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .wool {
+      color: var(--navy);
+    }
+
+    .synthetic {
+      color: #8b3a3a;
+    }
+
+    /* Strategy */
+    .strategy {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .strategy-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .strategy-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .strategy-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strategy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--gold), var(--navy));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .strategy-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .strategy-card:hover::before {
+      opacity: 1;
+    }
+
+    .strategy-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--cream);
+      border-radius: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .strategy-card:hover .strategy-number {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .strategy-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .strategy-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* References */
+    .references {
+      background: var(--cream-dark);
+    }
+
+    .references-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .reference-item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .reference-item:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .reference-item a {
+      color: var(--navy);
+      word-break: break-all;
+    }
+
+    .reference-item a:hover {
+      color: var(--gold);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-deep);
+      color: var(--white);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .footer-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .footer-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a href="#main" class="sr-only">Skip to main content</a>
 
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <div class="brand">
-        <img class="brand__mark" src="./assets/img_16.jpeg" alt="Ak-shumkar Nest logo mark" />
-        <span class="brand__name">Ak-shumkar Nest</span>
-      </div>
-      <nav class="nav">
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand">
+        <img src="./assets/img_16.jpeg" alt="Ak-shumkar Nest" class="nav-logo">
+        <span class="nav-title">Ak-shumkar Nest</span>
+      </a>
+      <div class="nav-links">
         <a href="#checklist">Checklist</a>
-        <a href="#do-dont">Do &amp; Don&apos;ts</a>
+        <a href="#guidelines">Guidelines</a>
         <a href="#evidence">Evidence</a>
         <a href="#materials">Materials</a>
-        <a href="#strategy">7 Cs</a>
-        <a href="#references">References</a>
-      </nav>
+        <a href="#strategy">Strategy</a>
+      </div>
+      <button class="nav-menu-btn" id="menuOpen" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
-  </header>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="mobile-menu-links">
+      <a href="#checklist">Checklist</a>
+      <a href="#guidelines">Do's & Don'ts</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#materials">Materials</a>
+      <a href="#strategy">7 C's Strategy</a>
+      <a href="#references">References</a>
+    </div>
+  </div>
 
   <main id="main">
+    <!-- Hero -->
     <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__left">
-          <img class="hero__logo" src="./assets/img_19.jpeg" alt="AK-SHUMKAR NEST — PROTECTING EVERY BREATH — Freeing Every Child" />
-          <div class="hero__quote">
-            <img src="./assets/img_20.jpeg" alt="Campaign quote" />
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge fade-up">Health Campaign</div>
+          <h1 class="fade-up delay-1">Protecting <span>Every Breath</span></h1>
+          <p class="hero-text fade-up delay-2">
+            Air pollution is the largest environmental risk to children in Kyrgyzstan.
+            The Ak-shumkar falcon represents our vision: <em>"Every child free from illness, protected in the nest."</em>
+          </p>
+          <div class="hero-cta fade-up delay-3">
+            <a href="#checklist" class="btn btn-primary">View Checklist</a>
+            <a href="#evidence" class="btn btn-secondary">Learn More</a>
+          </div>
+          <div class="stats fade-up delay-4">
+            <div class="stat">
+              <div class="stat-value">18°C</div>
+              <div class="stat-label">Safe temperature</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">25%</div>
+              <div class="stat-label">Heat loss reduced</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">30%</div>
+              <div class="stat-label">Cleaner air at 2PM</div>
+            </div>
           </div>
         </div>
-
-        <div class="hero__right">
-          <div class="card">
-            <h1>Seal &amp; Breathe</h1>
-            <p class="lead">A minimal, evidence-informed checklist for creating a clean, warm, safe nest for every newborn breath.</p>
-            <div class="card-divider"></div>
-            <h2>Focus</h2>
-            <p>Behavior-first messaging built on local traditions and global health guidance. The checklist turns complex indoor air interventions into three doable home actions.</p>
-            <ul class="bullets">
-              <li><strong>Seal</strong> drafts with felt strips.</li>
-              <li><strong>Isolate</strong> warmth to keep homes above 18°C.</li>
-              <li><strong>Ventilate</strong> at the cleanest time of day.</li>
-            </ul>
+        <div class="hero-visual fade-up delay-2">
+          <div class="hero-logo-wrapper">
+            <div class="hero-logo-bg"></div>
+            <img src="./assets/img_19.jpeg" alt="Ak-shumkar Nest - Protecting Every Breath, Freeing Every Child" class="hero-logo">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="checklist">
+    <!-- Mission -->
+    <section class="section mission">
       <div class="container">
-        <div class="section__head">
-          <h2>Seal &amp; Breathe</h2>
-          <p class="muted">Nest Checklist</p>
+        <div class="section-header">
+          <div class="section-label">Our Mission</div>
+          <h2>Seal & Breathe</h2>
+          <p>A minimal, evidence-informed approach to creating a clean, warm, safe nest for every newborn breath.</p>
         </div>
-
-        <div class="grid grid--2">
-          <div class="card">
-            <p class="lead">Core message: Prepare your Ak-shumkar Nest: A clean, warm, safe space protects your baby’s first and every breath.</p>
-            <p><strong>Communication Objective:</strong> To encourage caregivers, particularly fathers and pregnant women, to implement a set of evidence-based home practices (localized insulation, draft sealing, and targeted ventilation) to lower newborn exposure to fine particulate matter (PM2.5), thereby reducing the risks of acute lower respiratory infections, low birth weight, and preterm birth.</p>
-            <p><strong>Key Benefit/ Promise:</strong> By preparing the "nest," caregivers ensure their newborn breathes cleaner air, “Your baby will breathe cleaner air, grow stronger, and have a healthier, disease-free future.” This promise combines emotional protection (cultural value) with scientific benefit (reduced PM2.5 exposure).</p>
-            <p><strong>Desired Action Response:</strong> Before the baby arrives, caregivers will finish a localized "Nest Checklist," which will lead to the changes of the home environment (such as timing ventilation and sealing windows/doors with felt).</p>
+        <div class="mission-grid">
+          <div class="mission-card">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>Seal</h3>
+            <p>Block drafts with traditional wool-felt strips to maintain warmth and filter air naturally.</p>
           </div>
+          <div class="mission-card">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v10"></path>
+                <path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path>
+              </svg>
+            </div>
+            <h3>Isolate</h3>
+            <p>Keep homes above the 18°C threshold recommended by WHO for respiratory health protection.</p>
+          </div>
+          <div class="mission-card">
+            <div class="mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+              </svg>
+            </div>
+            <h3>Ventilate</h3>
+            <p>Open windows at 2PM when outdoor air is 30% cleaner than morning hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="card">
-            <h3>Checklist</h3>
-            <p class="muted">Your progress is saved on this device.</p>
-
-            <ul class="checklist" data-checklist="nest">
-              <li>
-                <label class="check">
-                  <input type="checkbox" id="c1" />
-                  <span>Seal (Felt)</span>
-                </label>
-              </li>
-              <li>
-                <label class="check">
-                  <input type="checkbox" id="c2" />
-                  <span>Isolate (Warmth)</span>
-                </label>
-              </li>
-              <li>
-                <label class="check">
-                  <input type="checkbox" id="c3" />
-                  <span>Ventilate (Airflow)</span>
-                </label>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <label class="check">
-                  <input type="checkbox" id="c4" />
-                  <span>Weekly Nest Check: inspect felt seals and do a short-burst ventilation cycle.</span>
-                </label>
-              </li>
-            </ul>
-
-            <div class="actions">
-              <div class="progress" aria-hidden="true">
-                <span class="progress__bar" id="progress-bar"></span>
+    <!-- Checklist -->
+    <section class="section checklist-section" id="checklist">
+      <div class="container checklist-container">
+        <div class="section-header">
+          <div class="section-label">Take Action</div>
+          <h2>Nest Checklist</h2>
+          <p>Your baby will breathe cleaner air, grow stronger, and have a healthier future.</p>
+        </div>
+        <div class="checklist-card">
+          <div class="checklist-header">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+              Progress
+            </h3>
+            <div class="checklist-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
               </div>
-              <button class="btn" id="reset">Reset checklist</button>
-              <span class="muted" id="status" aria-live="polite"></span>
+              <span class="progress-text" id="progressText">0/4</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="do-dont">
-      <div class="container">
-        <div class="section__head">
-          <h2>Do &amp; Don&apos;ts</h2>
-          <p class="muted">Quick guide</p>
-        </div>
-
-        <div class="grid grid--2">
-          <div class="card do-card">
-            <h3>Do</h3>
-            <ul class="do-list">
-              <li>Seal (Felt)</li>
-              <li>Isolate (Warmth)</li>
-              <li>Ventilate (Airflow)</li>
-              <li>Weekly Nest Check: inspect felt seals and do a short-burst ventilation cycle.</li>
-            </ul>
-          </div>
-          <div class="card dont-card">
-            <h3>Don&apos;t</h3>
-            <ul class="dont-list">
-              <li>Synthetic Foam/Rubber Seals</li>
-              <li>Petroleum-based: Non-renewable chemicals.</li>
-              <li>Basic: Static insulation; loses loft over time.</li>
-              <li>Non-breathable: Traps condensation; promotes mold.</li>
-              <li>Inactive: Simply blocks air; may off-gas VOCs.</li>
-              <li>Low: Cracks, peels, and degrades in 1-2 seasons.</li>
-              <li>Generic: Industrial/Imported feel.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="evidence">
-      <div class="container">
-        <div class="section__head">
-          <h2>Evidence &amp; messaging</h2>
-          <p class="muted">Key claims &amp; rationale used in the campaign text</p>
-        </div>
-
-        <div class="info-list">
-          <details class="info-card" open>
-            <summary>Health protection threshold</summary>
-            <p>Effective sealing with felt strips and maintaining a stable temperature ensures the home stays above the 18°C threshold recommended for protecting respiratory health (WHO 2018).</p>
-          </details>
-          <details class="info-card">
-            <summary>Energy poverty &amp; heat loss</summary>
-            <p>We provide logical proof that sealing drafts with wool-felt can reduce heat loss by up to 25%, a critical factor for families facing energy poverty (ARIS 2020).</p>
-          </details>
-          <details class="info-card">
-            <summary>Targeted ventilation timing</summary>
-            <p>"We ventilate at 2:00 PM because the air is 30% cleaner than at 8:00 AM" (UNICEF 2022).</p>
-          </details>
-          <details class="info-card">
-            <summary>Tradition &amp; practice framing</summary>
-            <p>The Heart (Tradition): We tap into the "Heart" by connecting the checklist to the Yurt tradition. Framing the felt strips and the Kelt (lattice) ventilation as a modern evolution of the Kerege (yurt wall) honors Kyrgyz heritage, making the health intervention feel like an act of cultural pride rather than an external instruction. Just as the Tunduk (roof hole) of the yurt was opened during the sunny heat of the day to let out the smoke, we open our modern windows when the sun is highest to let our 'Nest' breathe."</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="materials">
-      <div class="container">
-        <div class="section__head">
-          <h2>The "Warm Nest" Protective Barrier: Material &amp; Health Comparison</h2>
-          <p class="muted">From the campaign report table</p>
-        </div>
-
-        <details class="info-card">
-          <summary>The "Warm Nest" Protective Barrier: Material &amp; Health Comparison</summary>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Wool-Felt Strips (Akshumkar Seal)</th>
-                  <th>Synthetic Foam/Rubber Seals</th>
-                  <th>Health &amp; Strategic Impact (Wool-Felt)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Material Composition</td>
-                  <td>Natural &amp; Bioactive: Renewable Kyrgyz wool.</td>
-                  <td>Petroleum-based: Non-renewable chemicals.</td>
-                  <td>Sustainability: Supports local economy &amp; reduces plastic waste.</td>
-                </tr>
-                <tr>
-                  <td>Thermal Performance</td>
-                  <td>Superior: Natural "crimps" trap air to maintain 18°C (WHO 2018).</td>
-                  <td>Basic: Static insulation; loses loft over time.</td>
-                  <td>Head: Prevents cardiovascular &amp; respiratory stress from cold.</td>
-                </tr>
-                <tr>
-                  <td>Moisture &amp; Mold</td>
-                  <td>Breathable: Absorbs/releases moisture to prevent mold growth.</td>
-                  <td>Non-breathable: Traps condensation; promotes mold.</td>
-                  <td>Heart: Protects children from asthma triggers (WHO 2009).</td>
-                </tr>
-                <tr>
-                  <td>Air Purification</td>
-                  <td>Active: Naturally neutralizes pollutants like (NO_2) and Formaldehyde.</td>
-                  <td>Inactive: Simply blocks air; may off-gas VOCs.</td>
-                  <td>Safety: Acts as a 24/7 mechanical filter for the "Nest."</td>
-                </tr>
-                <tr>
-                  <td>Durability</td>
-                  <td>High: Resists UV radiation and mountain temperature swings.</td>
-                  <td>Low: Cracks, peels, and degrades in 1-2 seasons.</td>
-                  <td>Economy: A long￾term investment for low-income families.</td>
-                </tr>
-                <tr>
-                  <td>Cultural Identity</td>
-                  <td>Profound: Linked to the Yurt heritage (Kerege/Kiyiz).</td>
-                  <td>Generic: Industrial/Imported feel.</td>
-                  <td>Ideation: Boosts "Self-Efficacy" through cultural pride.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </details>
-
-      </div>
-    </section>
-
-    <section class="section" id="strategy">
-      <div class="container">
-        <div class="section__head">
-          <h2>The Seven C’s: "Akshumkar Nest" Campaign Strategy</h2>
-          <p class="muted">Expandable sections</p>
-        </div>
-
-        <div class="accordion">
-          <details>
-            <summary>1. Command Attention</summary>
-            <div class="panel">
-              <p>The Falcon’s Nest Symbol of the Ak-shumkar (White Falcon) as the main logo to represent a guardian of the household. Just as the falcon selects high, clean environments for its young, our campaign commands attention by framing the home as a "Nest" that requires intentional construction. This visual metaphor aligns with the UNICEF (2020) and WHO (2023) approach of using culturally resonant symbols to drive community engagement in health behaviors.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>2. Clarify Message</summary>
-            <div class="panel">
-              <p>The "Seal &amp; Breathe" Checklist, the message is refined into a three-step Nest Checklist: Seal (Felt), Isolate (Warmth), and Ventilate (Airflow). This addresses the dual challenge in Kyrgyzstan: preventing cold air infiltration while ensuring proper air exchange. Clarifying that ventilation is necessary even in cold weather is crucial to prevent "sick building syndrome," as noted in WHO (2009) guidelines on indoor air quality.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>3. Communicate Benefit</summary>
-            <div class="panel">
-              <p>A Resilient, Healthy Child, the primary benefit is a child free from diseases like pneumonia and bronchitis. Effective sealing with felt strips and maintaining a stable temperature ensures the home stays above the 18°C threshold recommended for protecting respiratory health (WHO 2018). The secondary benefit is economic, as reduced heat loss directly translates to lower household expenditure on coal or electricity.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>4. Consistency</summary>
-            <div class="panel">
-              <p>A Single Language of Protection, consistency is maintained through bilingual (Kyrgyz/Russian) messaging and the repeated use of the "Nest Checklist" across clinics and schools. As UNICEF (2015) emphasizes, repetitive, multi-channel communication is the most effective way to turn a one-time health recommendation into a permanent social norm within a community.</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>5. Cater to Heart and Head</summary>
-            <div class="panel">
-              <p>(Tradition Meets Science) The Head (Science): We provide logical proof that sealing drafts with wool-felt can reduce heat loss by up to 25%, a critical factor for families facing energy poverty (ARIS 2020). "We ventilate at 2:00 PM because the air is 30% cleaner than at 8:00 AM" (UNICEF 2022). We seal with felt, and the reason we chose felt is because of the science behind it in helping achieve our campaign goals.</p>
-              <p>The Heart (Tradition): We tap into the "Heart" by connecting the checklist to the Yurt tradition. Framing the felt strips and the Kelt (lattice) ventilation as a modern evolution of the Kerege (yurt wall) honors Kyrgyz heritage, making the health intervention feel like an act of cultural pride rather than an external instruction. Just as the Tunduk (roof hole) of the yurt was opened during the sunny heat of the day to let out the smoke, we open our modern windows when the sun is highest to let our 'Nest' breathe."</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>6. Create Trust</summary>
-            <div class="panel">
-              <p>The Seal of Authority, trust is gained by integrating local knowledge into the context of international expertise. We offer a "Gold Standard" of care by offering the checklist as a tool recommended by UNICEF and WHO data with Kyrgyz Yurt Heritage. It has been proven that this "hybrid" authority, which combines regional traditional materials with global medical data, increases adoption rates in rural Central Asian contexts (UCA 2020).</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>7. Call to Action</summary>
-            <div class="panel">
-              <p>The Weekly Household Checklist, the campaign concludes with a clear behavioral trigger: the Weekly Nest Check. Caregivers are encouraged to physically check their felt seals and ensure they have performed "short-burst ventilation." This call to action transforms passive knowledge into an active, life-saving habit for the family.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="references">
-      <div class="container">
-        <div class="section__head">
-          <h2>7Cs Reference</h2>
-          <p class="muted">Links as provided in the report</p>
-        </div>
-
-        <div class="card">
-          <ul class="refs">
-            <li>UNICEF 2020: <a href="https://www.unicef.org/mena/reports/community-engagement-standards">https://www.unicef.org/mena/reports/community-engagement-standards</a></li>
-            <li><a href="https://iris.who.int/server/api/core/bitstreams/d284845d-854c-4fe7-9504-41d2486e0896/content">https://iris.who.int/server/api/core/bitstreams/d284845d-854c-4fe7-9504-41d2486e0896/content</a></li>
-            <li>with unicef for culture WHO, U. Nurturing care framework progress report 2018–2023: reflections and looking forward.(2023). View Article.</li>
-            <li>World Health Organization (WHO) (2009) WHO Guidelines for Indoor Air Quality: Dampness and Mould. Geneva: WHO Press. Available at: <a href="https://www.ncbi.nlm.nih.gov/books/NBK143943/">https://www.ncbi.nlm.nih.gov/books/NBK143943/</a> (Accessed: 11 January 2026).</li>
-            <li>World Health Organization (WHO) (2018) Housing and Health Guidelines. Geneva: WHO Press. Available at: <a href="https://www.ncbi.nlm.nih.gov/books/NBK535294/">https://www.ncbi.nlm.nih.gov/books/NBK535294/</a> (Accessed: 11 January 2026).</li>
-            <li>UNICEF (2015) Communication for Development (C4D) Curriculum. New York: UNICEF.</li>
+          <ul class="checklist-items" id="checklistItems">
+            <li class="checklist-item" data-id="seal">
+              <div class="check-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="check-content">
+                <div class="check-label">Seal with Felt</div>
+                <p class="check-desc">Apply wool-felt strips around windows and doors to block cold drafts.</p>
+              </div>
+            </li>
+            <li class="checklist-item" data-id="isolate">
+              <div class="check-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="check-content">
+                <div class="check-label">Isolate Warmth</div>
+                <p class="check-desc">Maintain indoor temperature at or above 18°C for respiratory health.</p>
+              </div>
+            </li>
+            <li class="checklist-item" data-id="ventilate">
+              <div class="check-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="check-content">
+                <div class="check-label">Ventilate at 2PM</div>
+                <p class="check-desc">Open windows briefly when outdoor air quality is at its best.</p>
+              </div>
+            </li>
+            <li class="checklist-item" data-id="weekly">
+              <div class="check-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="check-content">
+                <div class="check-label">Weekly Nest Check</div>
+                <p class="check-desc">Inspect felt seals and perform a short-burst ventilation cycle.</p>
+              </div>
+            </li>
           </ul>
+          <div class="checklist-footer">
+            <span class="checklist-note">Progress saved on this device</span>
+            <button class="btn btn-reset" id="resetBtn">Reset</button>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <footer class="footer">
-          <p class="muted">Ak-shumkar Nest — static page for GitHub Pages</p>
-        </footer>
+    <!-- Guidelines -->
+    <section class="section guidelines" id="guidelines">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Quick Guide</div>
+          <h2>Do's & Don'ts</h2>
+          <p>Simple guidelines for creating a healthier home environment.</p>
+        </div>
+        <div class="guidelines-grid">
+          <div class="guideline-card do">
+            <div class="guideline-header">
+              <div class="guideline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3>Do</h3>
+            </div>
+            <ul class="guideline-list">
+              <li>Seal windows and doors with natural wool-felt strips</li>
+              <li>Keep indoor temperature above 18°C</li>
+              <li>Ventilate briefly at 2PM when air is cleanest</li>
+              <li>Perform weekly inspections of felt seals</li>
+              <li>Use renewable, locally-sourced materials</li>
+            </ul>
+          </div>
+          <div class="guideline-card dont">
+            <div class="guideline-header">
+              <div class="guideline-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </div>
+              <h3>Don't</h3>
+            </div>
+            <ul class="guideline-list">
+              <li>Use synthetic foam or rubber seals (petroleum-based)</li>
+              <li>Allow condensation buildup that promotes mold</li>
+              <li>Ventilate during morning rush hours (8AM)</li>
+              <li>Use materials that off-gas VOCs</li>
+              <li>Ignore seal degradation over time</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evidence -->
+    <section class="section evidence" id="evidence">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Research</div>
+          <h2>Evidence & Messaging</h2>
+          <p>Key claims and rationale backed by WHO and UNICEF research.</p>
+        </div>
+        <div class="evidence-grid">
+          <div class="evidence-item">
+            <button class="evidence-toggle" aria-expanded="false">
+              <h4>Health Protection Threshold</h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="evidence-content">
+              <div class="evidence-text">
+                <p>Effective sealing with felt strips and maintaining a stable temperature ensures the home stays above the 18°C threshold recommended for protecting respiratory health (WHO 2018).</p>
+              </div>
+            </div>
+          </div>
+          <div class="evidence-item">
+            <button class="evidence-toggle" aria-expanded="false">
+              <h4>Energy Poverty & Heat Loss</h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="evidence-content">
+              <div class="evidence-text">
+                <p>Sealing drafts with wool-felt can reduce heat loss by up to 25%, a critical factor for families facing energy poverty (ARIS 2020).</p>
+              </div>
+            </div>
+          </div>
+          <div class="evidence-item">
+            <button class="evidence-toggle" aria-expanded="false">
+              <h4>Targeted Ventilation Timing</h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="evidence-content">
+              <div class="evidence-text">
+                <p>"We ventilate at 2:00 PM because the air is 30% cleaner than at 8:00 AM" (UNICEF 2022). This timing maximizes fresh air while minimizing pollution exposure.</p>
+              </div>
+            </div>
+          </div>
+          <div class="evidence-item">
+            <button class="evidence-toggle" aria-expanded="false">
+              <h4>Tradition & Practice Framing</h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="evidence-content">
+              <div class="evidence-text">
+                <p>We connect the checklist to the Yurt tradition. Framing the felt strips and Kelt (lattice) ventilation as a modern evolution of the Kerege (yurt wall) honors Kyrgyz heritage, making the health intervention feel like an act of cultural pride rather than an external instruction.</p>
+                <p><em>"Just as the Tunduk (roof hole) of the yurt was opened during the sunny heat of the day to let out the smoke, we open our modern windows when the sun is highest to let our 'Nest' breathe."</em></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materials -->
+    <section class="section materials" id="materials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Comparison</div>
+          <h2>Material & Health Impact</h2>
+          <p>Why wool-felt outperforms synthetic alternatives for your family's health.</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Wool-Felt Strips</th>
+                <th>Synthetic Foam/Rubber</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Composition</td>
+                <td class="wool">Natural & bioactive renewable Kyrgyz wool</td>
+                <td class="synthetic">Petroleum-based non-renewable chemicals</td>
+              </tr>
+              <tr>
+                <td>Thermal</td>
+                <td class="wool">Natural "crimps" trap air to maintain 18°C</td>
+                <td class="synthetic">Static insulation; loses loft over time</td>
+              </tr>
+              <tr>
+                <td>Moisture</td>
+                <td class="wool">Breathable; absorbs/releases to prevent mold</td>
+                <td class="synthetic">Non-breathable; traps condensation</td>
+              </tr>
+              <tr>
+                <td>Air Quality</td>
+                <td class="wool">Naturally neutralizes NO₂ and formaldehyde</td>
+                <td class="synthetic">May off-gas volatile organic compounds</td>
+              </tr>
+              <tr>
+                <td>Durability</td>
+                <td class="wool">Resists UV and temperature swings</td>
+                <td class="synthetic">Cracks and degrades in 1-2 seasons</td>
+              </tr>
+              <tr>
+                <td>Heritage</td>
+                <td class="wool">Linked to Yurt heritage (Kerege/Kiyiz)</td>
+                <td class="synthetic">Generic industrial/imported feel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy -->
+    <section class="section strategy" id="strategy">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Framework</div>
+          <h2>The Seven C's Strategy</h2>
+          <p>A comprehensive communication framework for the Ak-shumkar Nest campaign.</p>
+        </div>
+        <div class="strategy-grid">
+          <div class="strategy-card">
+            <div class="strategy-number">1</div>
+            <h4>Command Attention</h4>
+            <p>The Ak-shumkar (White Falcon) symbol represents a guardian of the household, commanding attention by framing the home as a "Nest" requiring intentional construction.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">2</div>
+            <h4>Clarify Message</h4>
+            <p>A three-step Nest Checklist: Seal, Isolate, and Ventilate. This addresses the dual challenge of preventing cold air infiltration while ensuring proper air exchange.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">3</div>
+            <h4>Communicate Benefit</h4>
+            <p>Primary benefit: a child free from respiratory diseases. Secondary benefit: reduced heat loss means lower household expenditure on fuel.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">4</div>
+            <h4>Consistency</h4>
+            <p>Bilingual (Kyrgyz/Russian) messaging with repeated use of the "Nest Checklist" across clinics and schools turns recommendations into permanent social norms.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">5</div>
+            <h4>Cater to Heart & Head</h4>
+            <p>Science provides the proof; tradition provides the motivation. Connecting felt seals to Yurt heritage makes health intervention an act of cultural pride.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">6</div>
+            <h4>Create Trust</h4>
+            <p>Integrating local knowledge with international expertise from UNICEF and WHO creates a "Gold Standard" of care that increases adoption in rural contexts.</p>
+          </div>
+          <div class="strategy-card">
+            <div class="strategy-number">7</div>
+            <h4>Call to Action</h4>
+            <p>The Weekly Nest Check transforms passive knowledge into an active, life-saving habit through regular seal inspections and short-burst ventilation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="section references" id="references">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Sources</div>
+          <h2>References</h2>
+          <p>Research and guidelines supporting the campaign.</p>
+        </div>
+        <div class="references-list">
+          <div class="reference-item">
+            <strong>UNICEF 2020:</strong> Community Engagement Standards —
+            <a href="https://www.unicef.org/mena/reports/community-engagement-standards" target="_blank" rel="noopener">unicef.org/mena/reports/community-engagement-standards</a>
+          </div>
+          <div class="reference-item">
+            <strong>WHO 2023:</strong> Nurturing Care Framework Progress Report 2018–2023
+          </div>
+          <div class="reference-item">
+            <strong>WHO 2009:</strong> Guidelines for Indoor Air Quality: Dampness and Mould —
+            <a href="https://www.ncbi.nlm.nih.gov/books/NBK143943/" target="_blank" rel="noopener">ncbi.nlm.nih.gov/books/NBK143943</a>
+          </div>
+          <div class="reference-item">
+            <strong>WHO 2018:</strong> Housing and Health Guidelines —
+            <a href="https://www.ncbi.nlm.nih.gov/books/NBK535294/" target="_blank" rel="noopener">ncbi.nlm.nih.gov/books/NBK535294</a>
+          </div>
+          <div class="reference-item">
+            <strong>UNICEF 2015:</strong> Communication for Development (C4D) Curriculum. New York: UNICEF.
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <script src="./script.js"></script>
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="./assets/img_16.jpeg" alt="Ak-shumkar Nest" class="footer-logo">
+    <div class="footer-title">Ak-shumkar Nest</div>
+    <div class="footer-tagline">Protecting Every Breath — Freeing Every Child</div>
+    <p class="footer-text">A health campaign for cleaner indoor air in Kyrgyzstan</p>
+  </footer>
+
+  <script>
+    // Navigation scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+
+    menuOpen.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Checklist functionality
+    const STORAGE_KEY = 'akshumkar_nest_v2';
+    const checklistItems = document.querySelectorAll('.checklist-item');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function loadState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch {}
+    }
+
+    function updateProgress() {
+      const state = loadState();
+      const total = checklistItems.length;
+      const checked = Object.values(state).filter(Boolean).length;
+      const pct = (checked / total) * 100;
+
+      progressFill.style.width = `${pct}%`;
+      progressText.textContent = `${checked}/${total}`;
+
+      checklistItems.forEach(item => {
+        const id = item.dataset.id;
+        if (state[id]) {
+          item.classList.add('checked');
+        } else {
+          item.classList.remove('checked');
+        }
+      });
+    }
+
+    checklistItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.dataset.id;
+        const state = loadState();
+        state[id] = !state[id];
+        saveState(state);
+        updateProgress();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      saveState({});
+      updateProgress();
+    });
+
+    updateProgress();
+
+    // Evidence accordion
+    const evidenceItems = document.querySelectorAll('.evidence-item');
+    evidenceItems.forEach(item => {
+      const toggle = item.querySelector('.evidence-toggle');
+      toggle.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        evidenceItems.forEach(i => i.classList.remove('open'));
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
 </body>
 </html>
