@@ -811,6 +811,227 @@
       color: var(--white);
     }
 
+    /* How-To Guide */
+    .howto {
+      background: var(--white);
+      position: relative;
+    }
+
+    .howto::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cream-dark), transparent);
+    }
+
+    .howto-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .howto-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .howto-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .howto-card:hover {
+      box-shadow: var(--shadow-medium);
+      transform: translateY(-4px);
+    }
+
+    .howto-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+    }
+
+    .howto-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .howto-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .howto-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--white);
+    }
+
+    .howto-header-text h3 {
+      margin-bottom: 4px;
+      font-size: 1.3rem;
+    }
+
+    .howto-header-text p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .howto-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .howto-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .howto-tip {
+      background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+      border: 1px solid rgba(201, 162, 39, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .howto-tip svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      margin-top: 2px;
+    }
+
+    .howto-tip-content {
+      flex: 1;
+    }
+
+    .howto-tip-title {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .howto-tip-text {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .howto-alert {
+      background: linear-gradient(135deg, rgba(180, 83, 83, 0.08), rgba(180, 83, 83, 0.04));
+      border: 1px solid rgba(180, 83, 83, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .howto-alert svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      stroke: #b45353;
+      margin-top: 2px;
+    }
+
+    .howto-alert-content {
+      flex: 1;
+    }
+
+    .howto-alert-title {
+      font-weight: 600;
+      color: #8b3a3a;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .howto-alert-text {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .howto-app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .howto-app-badge:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .howto-app-badge svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
     /* Do's and Don'ts */
     .guidelines {
       background: var(--white);
@@ -1266,9 +1487,9 @@
       </a>
       <div class="nav-links">
         <a href="#checklist">Checklist</a>
+        <a href="#howto">How-To</a>
         <a href="#guidelines">Guidelines</a>
         <a href="#evidence">Evidence</a>
-        <a href="#materials">Materials</a>
         <a href="#strategy">Strategy</a>
       </div>
       <button class="nav-menu-btn" id="menuOpen" aria-label="Open menu">
@@ -1291,6 +1512,7 @@
     </button>
     <div class="mobile-menu-links">
       <a href="#checklist">Checklist</a>
+      <a href="#howto">How-To Guide</a>
       <a href="#guidelines">Do's & Don'ts</a>
       <a href="#evidence">Evidence</a>
       <a href="#materials">Materials</a>
@@ -1452,6 +1674,217 @@
           <div class="checklist-footer">
             <span class="checklist-note">Progress saved on this device</span>
             <button class="btn btn-reset" id="resetBtn">Reset</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How-To Guide -->
+    <section class="section howto" id="howto">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Step by Step</div>
+          <h2>How-To Guide</h2>
+          <p>Detailed instructions and tips for each action in the Nest Checklist.</p>
+        </div>
+        <div class="howto-grid">
+          <!-- Seal with Felt -->
+          <div class="howto-card">
+            <div class="howto-header">
+              <div class="howto-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="howto-header-text">
+                <h3>Seal with Felt</h3>
+                <p>Block drafts with traditional wool-felt strips</p>
+              </div>
+            </div>
+            <ul class="howto-steps">
+              <li class="howto-step">
+                <span class="step-number">1</span>
+                <span>Identify all gaps around windows and doors by feeling for cold air drafts or using a candle to detect airflow.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">2</span>
+                <span>Clean the surfaces thoroughly with a dry cloth to remove dust and ensure the felt adheres properly.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">3</span>
+                <span>Measure and cut wool-felt strips to fit each gap. Cut slightly longer than needed for a snug fit.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">4</span>
+                <span>Press the felt firmly into gaps around window frames, door edges, and any visible cracks in walls.</span>
+              </li>
+            </ul>
+            <div class="howto-tip">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <div class="howto-tip-content">
+                <div class="howto-tip-title">Pro Tip</div>
+                <p class="howto-tip-text">Use natural Kyrgyz wool-felt for best results. It breathes, regulates moisture, and connects to your cultural heritage.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isolate Warmth -->
+          <div class="howto-card">
+            <div class="howto-header">
+              <div class="howto-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v10"></path>
+                  <path d="M18.4 6.6a9 9 0 1 1-12.77.04"></path>
+                </svg>
+              </div>
+              <div class="howto-header-text">
+                <h3>Isolate Warmth</h3>
+                <p>Maintain safe indoor temperature</p>
+              </div>
+            </div>
+            <ul class="howto-steps">
+              <li class="howto-step">
+                <span class="step-number">1</span>
+                <span>Place a thermometer in the baby's room to monitor temperature. Keep it at or above 18°C (64°F).</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">2</span>
+                <span>Focus heating on the "nest" area — the room where your baby spends most time — rather than the entire home.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">3</span>
+                <span>Use thick curtains or hang felt over windows at night to trap warmth and reduce heat loss through glass.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">4</span>
+                <span>Place draft excluders (rolled felt or fabric) at the bottom of doors to prevent cold air from entering.</span>
+              </li>
+            </ul>
+            <div class="howto-tip">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <div class="howto-tip-content">
+                <div class="howto-tip-title">Energy Saving</div>
+                <p class="howto-tip-text">Proper sealing can reduce heat loss by up to 25%, lowering your fuel costs while keeping your family warm.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ventilate -->
+          <div class="howto-card">
+            <div class="howto-header">
+              <div class="howto-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path>
+                </svg>
+              </div>
+              <div class="howto-header-text">
+                <h3>Ventilate at 2PM</h3>
+                <p>Fresh air when quality is best</p>
+              </div>
+            </div>
+            <ul class="howto-steps">
+              <li class="howto-step">
+                <span class="step-number">1</span>
+                <span>Check outdoor air quality before ventilating. Use the AQI app to confirm conditions are safe (AQI below 100).</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">2</span>
+                <span>Open windows between 1PM and 3PM when air pollution is typically 30% lower than morning hours.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">3</span>
+                <span>Create cross-ventilation by opening windows on opposite sides of the room for 5-10 minutes.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">4</span>
+                <span>Close windows promptly after ventilation to retain warmth. Move baby to another warm room during ventilation.</span>
+              </li>
+            </ul>
+            <div class="howto-tip">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              <div class="howto-tip-content">
+                <div class="howto-tip-title">AQI App</div>
+                <p class="howto-tip-text">Download the Air Quality Index app through our website to check real-time pollution levels before ventilating.</p>
+              </div>
+            </div>
+            <div class="howto-app-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download through our website
+            </div>
+            <div class="howto-alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <div class="howto-alert-content">
+                <div class="howto-alert-title">Smoke Alert</div>
+                <p class="howto-alert-text">Do NOT ventilate if you see smoke, smell burning, or if AQI exceeds 150. On high pollution days, skip ventilation entirely to protect your baby's lungs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Nest Check -->
+          <div class="howto-card">
+            <div class="howto-header">
+              <div class="howto-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                  <path d="M9 16l2 2 4-4"></path>
+                </svg>
+              </div>
+              <div class="howto-header-text">
+                <h3>Weekly Nest Check</h3>
+                <p>Regular maintenance routine</p>
+              </div>
+            </div>
+            <ul class="howto-steps">
+              <li class="howto-step">
+                <span class="step-number">1</span>
+                <span>Pick a consistent day each week (e.g., Sunday) to perform your nest inspection.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">2</span>
+                <span>Check all felt seals for gaps, loosening, or damage. Press them back firmly or replace worn sections.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">3</span>
+                <span>Perform a "short-burst ventilation" — 3-5 minutes of fresh air exchange during the cleanest part of the day.</span>
+              </li>
+              <li class="howto-step">
+                <span class="step-number">4</span>
+                <span>Verify thermometer accuracy and check that the nest area maintains at least 18°C consistently.</span>
+              </li>
+            </ul>
+            <div class="howto-tip">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <div class="howto-tip-content">
+                <div class="howto-tip-title">Build a Habit</div>
+                <p class="howto-tip-text">Make it a family ritual. Just as your ancestors maintained the yurt, you maintain the modern nest for your child's health.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
